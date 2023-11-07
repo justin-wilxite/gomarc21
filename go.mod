@@ -1,5 +1,5 @@
-module github.com/gsiems/go-marc21
+module github.com/justin-wilxite/gomarc21
 
-go 1.13
+go 1.21.3
 
-require github.com/gsiems/go-isbn v0.0.0-20180127031122-d51736927d43
+require github.com/gsiems/go-marc21 v0.0.0-20200109043943-0b870fe83c91
