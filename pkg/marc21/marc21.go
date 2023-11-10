@@ -267,7 +267,7 @@ func (rec Record) RecordAsMARC() (marc []byte, err error) {
 	return marc, nil
 }
 
-func (rec *Record) AddControlField(tag string, text string) *Record {
+func (rec *Record) AddControlfield(tag string, text string) *Record {
 	rec.Controlfields = append(rec.Controlfields, &Controlfield{
 		Tag:  tag,
 		Text: text,
@@ -275,7 +275,7 @@ func (rec *Record) AddControlField(tag string, text string) *Record {
 	return rec
 }
 
-func (rec *Record) AddDataField(df *Datafield) *Record {
+func (rec *Record) AddDatafield(df *Datafield) *Record {
 	rec.Datafields = append(rec.Datafields, df)
 	return rec
 }
