@@ -182,3 +182,25 @@ func (sf Subfield) GetCode() string {
 func (sf Subfield) GetText() string {
 	return sf.Text
 }
+
+func NewDatafield(tag string) *Datafield {
+	return &Datafield{Tag: tag, Ind1: " ", Ind2: " "}
+}
+
+func (df *Datafield) SetInd1(ind1 string) *Datafield {
+	df.Ind1 = ind1
+	return df
+}
+
+func (df *Datafield) SetInd2(ind2 string) *Datafield {
+	df.Ind2 = ind2
+	return df
+}
+
+func (df *Datafield) AddSubfield(code string, text string) *Datafield {
+	df.Subfields = append(df.Subfields, &Subfield{
+		Code: code,
+		Text: text,
+	})
+	return df
+}
