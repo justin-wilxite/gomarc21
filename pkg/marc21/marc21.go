@@ -187,6 +187,32 @@ func (rec Record) String() string {
 	return ret
 }
 
+// Return a custom string display
+func (rec Record) CustomString(includeLeader bool, newLine string, blank string, beforeSubfield string, afterSubfieldCode string, afterSubfield string) (ret string) {
+	if includeLeader {
+		ret = fmt.Sprintf("LDR %s%s", rec.Leader.Text, newLine)
+	}
+	for _, cf := range rec.Controlfields {
+		ret += fmt.Sprintf("%s     %s%s", cf.GetTag(), cf.GetText(), newLine)
+	}
+	for _, df := range rec.Datafields {
+		ind1 := df.GetInd1()
+		ind2 := df.GetInd2()
+		if ind1 == " " {
+			ind1 = blank
+		}
+		if ind2 == " " {
+			ind2 = blank
+		}
+		pre := fmt.Sprintf("%s %s%s %s", df.GetTag(), ind1, ind2, beforeSubfield)
+		for _, sf := range df.Subfields {
+			ret += fmt.Sprintf("%s%s%s%s%s", pre, sf.GetCode(), afterSubfieldCode, sf.GetText(), afterSubfield)
+			pre = beforeSubfield
+		}
+	}
+	return ret
+}
+
 // RecordAsMARC converts a Record into a MARC record byte array
 func (rec Record) RecordAsMARC() (marc []byte, err error) {
 

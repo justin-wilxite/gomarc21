@@ -170,3 +170,15 @@ func TestLeaderPrint(t *testing.T) {
 
 	}
 }
+
+func TestCustomString(t *testing.T) {
+	rec := &Record{}
+	rec.AddControlfield("005", "20230224185445.0")
+	rec.AddDatafield(NewDatafield("020").SetInd2("0").AddSubfield("a", "test").AddSubfield("c", "9.99"))
+
+	res := rec.CustomString(false, "\n", "|", "|", " ", " ")
+
+	if res != "005     20230224185445.0\n020 |0 |a test |c 9.99 " {
+		t.Errorf("CustomString returned wrong result\n%s", res)
+	}
+}
