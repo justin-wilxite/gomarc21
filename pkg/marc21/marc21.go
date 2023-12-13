@@ -209,6 +209,7 @@ func (rec Record) CustomString(includeLeader bool, newLine string, blank string,
 			ret += fmt.Sprintf("%s%s%s%s%s", pre, sf.GetCode(), afterSubfieldCode, sf.GetText(), afterSubfield)
 			pre = beforeSubfield
 		}
+		ret += newLine
 	}
 	return ret
 }

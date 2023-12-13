@@ -178,7 +178,7 @@ func TestCustomString(t *testing.T) {
 
 	res := rec.CustomString(false, "\n", "|", "|", " ", " ")
 
-	if res != "005     20230224185445.0\n020 |0 |a test |c 9.99 " {
+	if res != "005     20230224185445.0\n020 |0 |a test |c 9.99 \n" {
 		t.Errorf("CustomString returned wrong result\n%s", res)
 	}
 }
